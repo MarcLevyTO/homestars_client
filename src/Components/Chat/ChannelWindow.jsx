@@ -11,6 +11,7 @@ function ChannelWindow(props) {
   const [users, setUsers] = useState([]);
   const [messages, setMessages] = useState([]);
 
+  // When sending a message, add the new message to the end of the messages list
   function sendMessage(message) {
     messageService.sendMessage(props.currentChannel.id, message).then(data => {
       if (data.id) {
@@ -20,6 +21,7 @@ function ChannelWindow(props) {
     });
   }
   
+  // When a new current channel is selected, reload the data from the database
   useEffect(() => {
     if (props.currentChannel.id) {
       channelService.fetchChannel(props.currentChannel.id).then(data => {

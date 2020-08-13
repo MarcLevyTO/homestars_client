@@ -43,10 +43,18 @@ function Chat() {
     setCurrentChannel(channel)
   }
 
+  function createChannel(name) {
+    channelService.createChannel(name).then(data => {
+      if (data.id) {
+        const newChannels = allChannels.concat(data);
+        setAllChannels(newChannels);
+      }
+    });
+  }
+
   return (
-    <div className="col-lg-8 offset-lg-2">
-      <h1>Chat Page</h1>
-      <LeftPanel channels={allChannels} changeChannel={changeChannel} />
+    <div>
+      <LeftPanel channels={allChannels} changeChannel={changeChannel} createChannel={createChannel} />
       <ChannelWindow currentChannel={currentChannel} />
     </div>
   );
