@@ -1,6 +1,6 @@
 import { authHeader, handleResponse } from '../_helpers';
 
-export const channelService = {
+export const messageService = {
   sendMessage,
   editMessage,
   deleteMessage,
@@ -13,7 +13,7 @@ export const channelService = {
 // @params    channel_id, message
 function sendMessage(channel_id, message) {
   const requestOptions = {
-    method: 'GET',
+    method: 'POST',
     headers: { ...authHeader(), 'Content-Type': 'application/json' },
     body: JSON.stringify({ channel_id, message }),
   };
@@ -57,7 +57,7 @@ function deleteMessage(message_id) {
 // @params    text
 function searchMessages(text) {
   const requestOptions = {
-    method: 'PUT',
+    method: 'GET',
     headers: { ...authHeader(), 'Content-Type': 'application/json' }
   };
   return fetch(`${process.env.REACT_APP_BASE_URL}/messages/search?text=${text}`, requestOptions).then(

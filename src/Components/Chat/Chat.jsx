@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { history } from '../../_helpers/history';
 
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Button from 'react-bootstrap/Button';
-
 import { userService } from '../../_services/userService';
 import { channelService } from '../../_services/channelService';
 
@@ -37,6 +33,9 @@ function Chat() {
     // Set list of all active channels
     channelService.loadChannels().then((data) => {
       setAllChannels(data);
+      if (data[0]) {
+        setCurrentChannel(data[0])
+      }
     });
   }, []);
 

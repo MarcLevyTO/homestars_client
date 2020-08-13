@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { history } from '../../_helpers/history';
+import { userService } from '../../_services/userService';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-
-import { userService } from '../../_services/userService';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -34,7 +33,6 @@ function Login() {
       }
       else {
         setHasError(false);
-        console.log('logged in', data);
         localStorage.setItem('jwt', data.token);
         history.push('/gifSearch');
       }
@@ -44,14 +42,13 @@ function Login() {
   useEffect(() => {
     let jwt = localStorage.getItem('jwt')
     if (jwt && jwt !== '') {
-      history.push('/gifSearch');
+      history.push('/');
     }
   }, []);
 
   return (
     <div className="col-lg-8 offset-lg-2">
       <Breadcrumb>
-        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/signup">SignUp</Breadcrumb.Item>
         <Breadcrumb.Item active>Login</Breadcrumb.Item>
       </Breadcrumb>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { history } from '../../_helpers/history';
 
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
@@ -27,19 +27,19 @@ function SignUp() {
 
   function handleSubmit() {
     setSubmitted(true);
-    userService.register(username).then((data) => {
-      if (data.id) {
-        setUsername('');
+    userService.signup(username, password).then((data) => {
+      if (data.errors) {
+        if (data.errors.password) {
+          setStatusMessage("Password errors");
+          setHasError(true);
+        }
+        if (data.errors.username) {
+          setStatusMessage("Username errors");
+        }
+      } else {
         setHasError(false);
-        setStatusMessage("User successfully created");
-        
-      } else if (data.username[0] === "has already been taken") {
-        setStatusMessage("User name has already been taken");
-        setHasError(true);
-      }
-      else {
-        setStatusMessage("An error has ocurred");
-        setHasError(true);
+        localStorage.setItem('jwt', data.token);
+        history.push('/');
       }
     });
   }
@@ -50,18 +50,18 @@ function SignUp() {
   return (
     <div className="col-lg-8 offset-lg-2">
       <Breadcrumb>
-        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-        <Breadcrumb.Item active>Sign Up</Breadcrumb.Item>
+        <Breadcrumb.Item active>Signup</Breadcrumb.Item>
+        <Breadcrumb.Item href="/login">Log In</Breadcrumb.Item>
       </Breadcrumb>
       <Form name="form">
         <Form.Group controlId="formUsername">
           <Form.Label>Username</Form.Label>
-          <Form.Control id="username" placeholder="username" aria-label="Username" onChange={handleUsernameChange} value={username} autoFocus />
+          <Form.Control type="text" id="username" placeholder="username" aria-label="Username" onChange={handleUsernameChange} value={username} autoFocus />
         </Form.Group>
 
         <Form.Group controlId="formPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control id="password" placeholder="password" aria-label="Password" onChange={handlePasswordChange} value={password} />
+          <Form.Control type="password" id="password" placeholder="password" aria-label="Password" onChange={handlePasswordChange} value={password} />
         </Form.Group>
           
         <Button onClick={() => handleSubmit()} variant="outline-primary">Sign Up</Button>

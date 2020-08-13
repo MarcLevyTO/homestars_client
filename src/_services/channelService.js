@@ -46,7 +46,7 @@ function fetchChannel(channel_id) {
     method: 'GET',
     headers: { ...authHeader(), 'Content-Type': 'application/json' }
   };
-  return fetch(`${process.env.REACT_APP_BASE_URL}/channel/${channel_id}`, requestOptions).then(
+  return fetch(`${process.env.REACT_APP_BASE_URL}/channels/${channel_id}`, requestOptions).then(
     handleResponse
   );
 }

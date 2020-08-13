@@ -36,7 +36,7 @@ function login(username, password) {
   );
 }
 
-// @route     POST /profile
+// @route     GET /profile
 // @desc      Fetch user's profile
 // @access    User
 // @params

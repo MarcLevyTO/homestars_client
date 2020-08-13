@@ -1,19 +1,12 @@
 import React from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-
 import { history } from '../_helpers';
 
-// import { HomePage } from '../HomePage';
 import { SignUp } from '../Components/SignUp';
 import { Login } from '../Components/Login';
 import { GifSearch } from '../Components/GifSearch';
 import { Chat } from '../Components/Chat';
-// import { Users } from '../Users';
-// import { User } from '../User';
-// import { EventLogs } from '../EventLogs';
 
 function App() {
   
@@ -33,11 +26,6 @@ function App() {
           </Switch>
         </Router>
       </div>
-      <Navbar fixed="bottom">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-        </Nav>
-      </Navbar>
     </div>
   );
 }

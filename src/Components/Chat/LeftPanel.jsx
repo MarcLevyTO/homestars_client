@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function LeftPanel(props) {
+  
   return (
     <div className="col-lg-8 offset-lg-2">
       <div class="list-grodiv">
