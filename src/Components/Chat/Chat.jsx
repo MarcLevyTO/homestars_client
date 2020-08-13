@@ -5,8 +5,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 
-import { userService } from '../../_services/user.service';
-import { channelService } from '../../_services/channel.service';
+import { userService } from '../../_services/userService';
+import { channelService } from '../../_services/channelService';
 
 import LeftPanel from './LeftPanel';
 import ChannelWindow from './ChannelWindow';
@@ -48,7 +48,7 @@ function Chat() {
     <div className="col-lg-8 offset-lg-2">
       <h1>Chat Page</h1>
       <LeftPanel channels={allChannels} changeChannel={changeChannel} />
-      <ChannelWindow test={"hello"} />
+      <ChannelWindow currentChannel={currentChannel} />
     </div>
   );
 }

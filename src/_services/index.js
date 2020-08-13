@@ -1,3 +1,4 @@
-export * from './user.service';
-export * from './channel.service';
-export * from './gif.service';
+export * from './userService';
+export * from './channelService';
+export * from './messageService';
+export * from './gifService';

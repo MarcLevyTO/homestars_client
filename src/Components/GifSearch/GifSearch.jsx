@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 
-import { gifService } from '../../_services/gif.service';
+import { gifService } from '../../_services/gifService';
 
 function GifSearch() {
   const [searchTerm, setSearchTerm] = useState('');

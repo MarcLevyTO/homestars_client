@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-import { userService } from '../../_services/user.service';
+import { userService } from '../../_services/userService';
 
 function Login() {
   const [username, setUsername] = useState('');
